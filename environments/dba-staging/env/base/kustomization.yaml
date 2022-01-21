@@ -1,0 +1,3 @@
+resources:
+- argocd-admin.yaml
+- dba-staging-environment.yaml

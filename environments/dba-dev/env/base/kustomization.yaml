@@ -1,0 +1,3 @@
+resources:
+- argocd-admin.yaml
+- dba-dev-environment.yaml

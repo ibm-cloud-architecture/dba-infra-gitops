@@ -1,0 +1,4 @@
+resources:
+- argo-app.yaml
+- dba-dev-env-app.yaml
+- dba-staging-env-app.yaml
