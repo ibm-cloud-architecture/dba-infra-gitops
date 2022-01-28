@@ -67,7 +67,7 @@ spec:
     sc_deployment_patterns: "workflow-workstreams"
     ## The optional components for the "foundation pattern" are ums, bas and bai.  If the user selects any of those optional components,
     ## it will be set here. Available option:
-    sc_optional_components: "baw_authoring,case,workstreams"
+    sc_optional_components: "baw_authoring,workstreams"
     ## This is the deployment type and the possible values are: starter and production.
     sc_deployment_type: "Starter"
     ## This is the deployment platform supported for CP4A and the possible values are: ROKS, OCP, and other (which includes all Certified Kubernetes platforms)
@@ -86,13 +86,13 @@ spec:
     storage_configuration:
       ## For 4.4 or Later, the storage class will be provided by the user
       ## during the execution of the User script (cp4a-deployment.sh)
-      sc_dynamic_storage_classname: ibmc-file-retain-gold
-      sc_block_storage_classname: ibmc-file-gold-gid
+      sc_dynamic_storage_classname: ibmc-file-gold
+      sc_block_storage_classname: ibmc-block-gold
       ## For ROKS (v3.x or v4.x), the Admin script creates the storage classes with the following names: cp4a-file-retain-bronze-gid, cp4a-file-retain-silver-gid,
       ## and cp4a-file-retain-gold-gid
-      sc_slow_file_storage_classname: ibmc-file-retain-bronze
-      sc_medium_file_storage_classname: ibmc-file-retain-silveribmc-file-retain-silver
-      sc_fast_file_storage_classname: ibmc-file-retain-gold
+      sc_slow_file_storage_classname: ibmc-file-bronze-gid
+      sc_medium_file_storage_classname: ibmc-file-silver-gid
+      sc_fast_file_storage_classname: ibmc-file-gold-gid
     root_ca_secret: "{{ meta.name }}-root-ca"
     sc_content_initialization: true
     sc_cpe_limited_storage: false
