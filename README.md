@@ -1,8 +1,27 @@
-# Digital Business Automatioon Infrastructure GitOps
+# Digital Business Automation Infrastructure GitOps
+
+This repository is defining different operands for Business Automation product. The operators are defined
+in the catalog repository and the instances here are for deployment of components that will be used
+to develop different automation solution.
+As some of those solutions are using artifacts that are managed in the context of a product, then the 
+governance of such artifacts stays within the product, and it is not recommended to adopt a gitops
+approach for them. 
+GitOps approach can still be used to manage common components, like BAStudio, ODM decision center,...
+
+## Scenarios
+
+### Deploy BAW in a multitenant namespace 
+
+The goal is to deploy the operators and operands for the dev, staging and production environments.
+
+![](./docs/images/Business_Automation_WorkflowOCP.png)
+
+For the OpenShift cluster in non-production environment the ArgoCD applications will look like:
+
 
 Example of defining infrastructure as code for:
 
-* BAW Operator
+* Cloud Pak  Operator
 * BAW server for dev and staging environments
 * BAI Operator
 * BAI for dev and staging environments
