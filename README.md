@@ -60,16 +60,6 @@ As an example, for the non-production OpenShift cluster, the `dba-dev` namespace
 
 ![]()
 
-* Creating namespaces and role binding
-
-
-Example of defining infrastructure as code for:
-
-* Cloud Pak  Operator
-* BAW server for dev and staging environments
-* BAI Operator
-* BAI for dev and staging environments
-
 
 ## GitOps Bootstrap
 
@@ -110,16 +100,16 @@ In the Operateur Hub, new IBM product operators should be visible.
 * Obtain your [IBM license entitlement key](https://github.com/IBM/cloudpak-gitops/blob/main/docs/install.md#obtain-an-entitlement-key) and save it in environment variable named IBM_ENTITLEMENT_KEY and
 then generate the sealed secret.
 
-```sh
-export IBM_ENTITLEMENT_KEY=...long-key...
-oc apply -f 
-```
+    ```sh
+    export IBM_ENTITLEMENT_KEY=...long-key...
+    oc apply -f 
+    ```
 
 * Create an ArgoCD project to isolate the ArgoCD app for this deployment
 
-```sh
-oc apply -k bootstrap/argocd-project 
-```
+    ```sh
+    oc apply -k bootstrap/argocd-project 
+    ```
 
 * Get the ArgoCD `admin` user's password with the command
 
@@ -135,9 +125,9 @@ oc apply -k bootstrap/argocd-project
 
 * Deploy postgresql operator
 
-```sh
-oc apply -k ./bootstrap/postgresql 
-```
+   ```sh
+    oc apply -k ./bootstrap/postgresql 
+   ```
 
 * Update the [OCP global pull secret of the `openshift-operators` project](https://github.com/IBM/cloudpak-gitops/blob/main/docs/install.md#update-the-ocp-global-pull-secret)
 with the entitlement key, then create `ibm-entitlement-key` and `admin.registrykey`
@@ -167,13 +157,13 @@ with the entitlement key, then create `ibm-entitlement-key` and `admin.registryk
 
   And the following operators to monitoring all namespaces. 
 
-![](./docs/imags/OCPconsole-baoperators.png)
+  ![](./docs/imags/OCPconsole-baoperators.png)
 
 * To start the CD management with ArgoCD, just executing the following should work.
 
-```sh
-oc apply -k config/argocd
-```
+  ```sh
+  oc apply -k config/argocd
+  ```
 
 The expected set of ArgoCD apps looks like:
 
