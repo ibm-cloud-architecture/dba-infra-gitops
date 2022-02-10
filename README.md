@@ -64,10 +64,19 @@ As an example, for the non-production OpenShift cluster, the `dba-dev` namespace
 ## GitOps Bootstrap
 
 * Login to the OpenShift Console, and get login token to be able to use `oc cli`
-* If not done already, use the script to install GitOps, Pipeline and sealed secrets operators: 
+* Modify the `bootstrap.sh` script with your IAM user name
+* Obtain your [IBM license entitlement key](https://github.com/IBM/cloudpak-gitops/blob/main/docs/install.md#obtain-an-entitlement-key) 
+and save it in environment variable named IBM_ENTITLEMENT_KEY
+
+    ```sh
+    export IBM_ENTITLEMENT_KEY=...long-key...
+    ```
+
+* Start the bootstrap process to deploy the starter type in the `dba-dev` project. The operatos will be in the
+`openshift-gitops` and monitor All Namespaces: 
 
   ```sh
-    ./bootstrap/scripts/installGitOpsOperators.sh
+    ./bootstrap.sh
   ```
     
   Once the operators are running the command: `oc get pods -n openshift-gitops` should return
@@ -83,27 +92,6 @@ a list of pods like:
     openshift-gitops-server-7957cc47d9-cmxvw                      1/1     Running   0          4h5m
   ```
 
-* Deploy Sealed Secrets server, so we can keep secrets in the GitOps in a sealed form. The following command use Bitmani deployment configuration and will create a `sealed-secrets` project/namespaceå.
-
-```sh
-oc apply -k bootstrap/sealed-secrets
-```
-
-* If not done already, install IBM product catalog.
-
-  ```sh
-  ./bootstrap/scripts/installIBMCatalog.sh
-  ```
-
-In the Operateur Hub, new IBM product operators should be visible.
-
-* Obtain your [IBM license entitlement key](https://github.com/IBM/cloudpak-gitops/blob/main/docs/install.md#obtain-an-entitlement-key) and save it in environment variable named IBM_ENTITLEMENT_KEY and
-then generate the sealed secret.
-
-    ```sh
-    export IBM_ENTITLEMENT_KEY=...long-key...
-    oc apply -f 
-    ```
 
 * Create an ArgoCD project to isolate the ArgoCD app for this deployment
 
@@ -167,12 +155,22 @@ with the entitlement key, then create `ibm-entitlement-key` and `admin.registryk
 
 The expected set of ArgoCD apps looks like:
 
+ ![](./docs/images/argocd-apps.png)
+
+  and in the details for the 
+
+ ![](./docs/images/argocd-baw-svc.png)
+
 * Get the  `cp4ba-access-info` ConfigMaps for the different URLs to access the deployed capacities.
 
   ```sh
   oc describe cm icp4adeploy-cp4ba-access-info
   ```
-  
+
+## Automation Decision Servicee on AWS - ROSA
+
+[See the detailed article to deploy Cloud Pak for Automation and ADS on AWS  Managed RedHat OpenShift ROSA here](./docs/CP4BA-ADS-ROSAV.md)
+
 ## Add more environment
 
 ## Add more service 
