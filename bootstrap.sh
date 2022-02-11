@@ -3,10 +3,6 @@ CP_VERSION=21.0.3
 
 export CP4BA_AUTO_CLUSTER_USER="IAM#boyerje@us.ibm.com"
 
-# modify with care
-export ENTITLEMENT_KEY=`cat ./assets/entitlement_key.text`
-export IBM_EMAIL=`cat ./assets/entitlement_key.text`
-
 if [[ -z "$IBM_ENTITLEMENT_KEY" ]]; then
       echo "Need IBM_ENTITLEMENT_KEY key set"
       exit 1

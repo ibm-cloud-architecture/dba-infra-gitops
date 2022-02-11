@@ -78,7 +78,15 @@ and save it in environment variable named IBM_ENTITLEMENT_KEY
   ```sh
     ./bootstrap.sh
   ```
-    
+  
+  The previous operation will install the following operators into the `ibm-common-services` namespace:
+
+  ![](./docs/imags/ics-operators.png)
+
+  And the following operators to monitoring all namespaces. 
+
+  ![](./docs/imags/OCPconsole-baoperators.png)
+
   Once the operators are running the command: `oc get pods -n openshift-gitops` should return
 a list of pods like:
 
@@ -132,28 +140,13 @@ with the entitlement key, then create `ibm-entitlement-key` and `admin.registryk
     ./bootstrap/scripts/copySecrets.sh ibm-entitlement-key openshift-operators admin.registrykey
     ```
 
-* Deploy IBM product Operators to monitor All Namespaces 
-
-
-  ```sh
-  ./bootstrap/scripts/installIBMOperators.sh
-  ```
-
-  The previous operation will install the following operators into the `ibm-common-services` namespace:
-
-  ![](./docs/imags/ics-operators.png)
-
-  And the following operators to monitoring all namespaces. 
-
-  ![](./docs/imags/OCPconsole-baoperators.png)
-
 * To start the CD management with ArgoCD, just executing the following should work.
 
   ```sh
   oc apply -k config/argocd
   ```
 
-The expected set of ArgoCD apps looks like:
+ The expected set of ArgoCD apps looks like:
 
  ![](./docs/images/argocd-apps.png)
 
@@ -167,9 +160,6 @@ The expected set of ArgoCD apps looks like:
   oc describe cm icp4adeploy-cp4ba-access-info
   ```
 
-## Automation Decision Servicee on AWS - ROSA
-
-[See the detailed article to deploy Cloud Pak for Automation and ADS on AWS  Managed RedHat OpenShift ROSA here](./docs/CP4BA-ADS-ROSAV.md)
 
 ## Add more environment
 

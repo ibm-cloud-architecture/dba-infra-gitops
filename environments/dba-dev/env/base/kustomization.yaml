@@ -1,3 +1,4 @@
 resources:
 - argocd-admin.yaml
+- service-account.yaml
 - dba-dev-environment.yaml
