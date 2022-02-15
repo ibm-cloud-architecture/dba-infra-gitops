@@ -38,10 +38,8 @@ he major Git infrastructure providers do not offer access control by folders ins
 parameters in the resources. That is a preferred approach to reduce replication efforts across folders and minimize 
 surprises with slight differences between environments creating blind spots in the progression of changes across 
 the pipeline.
-* Git Repository granularity: adoptingg the team based ownership may be a good approach. A mono repository for all Cloud Pak
-may be a valuable solution for demonstration purpose.
-* [Kustomize](https://kustomize.io) adoption: Using Kustomize allows the maintainer of a GitOps repository to selectively reference portions 
-of other repositories, either in their literal form or with patched sections
+* Git Repository granularity: adoptingg the team based ownership may be a good approach. A mono repository for all Cloud Pak may be a valuable solution for demonstration purpose.
+* [Kustomize](https://kustomize.io) adoption: Using Kustomize allows the maintainer of a GitOps repository to selectively reference portions of other repositories, either in their literal form or with patched sections
 * Helm dynamically generates the files based on functions and parameters, resulting in more reusable repositories, at the expense of 
 some visibility into what is deployed on a target cluster
 * Secret management approach: from pre-crating secrets in the cluster, use Sealed secrets, or use dynamic secret injection with Vault or [IBM Cloud Key Protect Services](https://www.ibm.com/cloud/key-protect)
@@ -56,7 +54,7 @@ from the same central GitOps repository. The target deployment looks like in the
 ![](./docs/images/BAW_BAI.png)
 (src for this diagram: [docs/diagrams/Business_Automation_WorkflowOCP.drawio](https://github.com/ibm-cloud-architecture/dba-gitops-catalog/tree/main/docs/diagrams/BAW_BAI.drawio))
 
-As an example, for the non-production OpenShift cluster, the `dba-dev` namespace, to deploy Business Automation Studio, the ArgoCD applications are:
+As an example, for the non-production OpenShift cluster, the `cp4a` namespace, to deploy Business Automation Studio, the ArgoCD applications are:
 
 ![]()
 
@@ -65,8 +63,7 @@ As an example, for the non-production OpenShift cluster, the `dba-dev` namespace
 
 * Login to the OpenShift Console, and get login token to be able to use `oc cli`
 * Modify the `bootstrap.sh` script with your IAM user name
-* Obtain your [IBM license entitlement key](https://github.com/IBM/cloudpak-gitops/blob/main/docs/install.md#obtain-an-entitlement-key) 
-and save it in environment variable named IBM_ENTITLEMENT_KEY
+* Obtain your [IBM license entitlement key](https://github.com/IBM/cloudpak-gitops/blob/main/docs/install.md#obtain-an-entitlement-key) and save it in environment variable named IBM_ENTITLEMENT_KEY
 
     ```sh
     export IBM_ENTITLEMENT_KEY=...long-key...
@@ -83,7 +80,7 @@ and save it in environment variable named IBM_ENTITLEMENT_KEY
 
   ![](./docs/imags/ics-operators.png)
 
-  And the following operators to monitoring all namespaces. 
+  And the following operators into `openshift-operators` to monitoring all namespaces. 
 
   ![](./docs/imags/OCPconsole-baoperators.png)
 
@@ -159,6 +156,11 @@ with the entitlement key, then create `ibm-entitlement-key` and `admin.registryk
   ```sh
   oc describe cm icp4adeploy-cp4ba-access-info
   ```
+
+## Upgrade operator
+
+First start by upgrading IBM common services according to https://github.ibm.com/IBMPrivateCloud/common-services-docs/blob/e6acff94dd47daab4c72df728c62cf76302d70cc/installer/3.x.x/upgrade.md#upgrading-from-version-36x-to-version-37x.
+
 
 
 ## Add more environment

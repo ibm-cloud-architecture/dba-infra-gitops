@@ -1,5 +1,5 @@
 resources:
 - argo-app.yaml
-#- dba-dev-env-app.yaml
-- dba-dev-svc-app.yaml
+- cp4a-env-app.yaml
+# - dba-qa-env-app.yaml
 # - dba-staging-env-app.yaml

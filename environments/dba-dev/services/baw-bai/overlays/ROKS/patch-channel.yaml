@@ -1,6 +1,0 @@
-- op: replace
-  path: /spec/channel
-  value: v21.3
-- op: replace
-  path: /spec/shared_configuration/sc_deployment_platform
-  value: ROKS

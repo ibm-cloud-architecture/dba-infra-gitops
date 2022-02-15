@@ -1,0 +1,599 @@
+﻿apiVersion: icp4a.ibm.com/v1
+kind: ICP4ACluster
+metadata:
+  labels:
+    app.kubernetes.io/instance: ibm-dba
+    app.kubernetes.io/managed-by: ibm-dba
+    app.kubernetes.io/name: ibm-dba
+    release: 21.0.3
+  name: icp4adeploy
+  namespace: dba-qa
+spec:
+  bai_configuration:
+    business_performance_center:
+      all_users_access: true
+    image_credentials:
+      registry: cp.icr.io/cp/cp4a
+  resource_registry_configuration:
+    images:
+      resource_registry:
+        repository: cp.icr.io/cp/cp4a/aae/dba-etcd
+        tag: 21.0.3-IF002
+  ecm_configuration:
+    cmis:
+      image:
+        repository: cp.icr.io/cp/cp4a/fncm/cmis
+        tag: ga-306-cmis-la102
+    cpe:
+      image:
+        repository: cp.icr.io/cp/cp4a/fncm/cpe
+        tag: ga-558-p8cpe-la003
+    css:
+      image:
+        repository: cp.icr.io/cp/cp4a/fncm/css
+        tag: ga-558-p8css-la003
+    document_processing:
+      cdra:
+        image:
+          repository: cp.icr.io/cp/cp4a/iadp/cdra
+          tag: 21.0.3-IF002
+      cds:
+        image:
+          repository: cp.icr.io/cp/cp4a/iadp/cds
+          tag: 21.0.3-IF002
+      cpds:
+        image:
+          repository: cp.icr.io/cp/cp4a/iadp/cpds
+          tag: 21.0.3-IF002
+      gitgateway:
+        image:
+          repository: cp.icr.io/cp/cp4a/iadp/gitgateway
+          tag: 21.0.3-IF002
+      mongo:
+        image:
+          repository: cp.icr.io/cp/cp4a/iadp/mongo
+          tag: 4.2.14
+      viewone:
+        image:
+          repository: cp.icr.io/cp/cp4a/iadp/viewone
+          tag: 21.0.3-IF002
+    tm:
+      image:
+        repository: cp.icr.io/cp/cp4a/fncm/taskmgr
+        tag: ga-3011-tm-la001
+  ads_configuration:
+    run_service:
+      image:
+        repository: cp.icr.io/cp/cp4a/ads/ads-run
+        tag: 21.0.3-IF002
+    parsing_service:
+      image:
+        repository: cp.icr.io/cp/cp4a/ads/ads-parsing
+        tag: 21.0.3-IF002
+    git_service:
+      image:
+        repository: cp.icr.io/cp/cp4a/ads/ads-gitservice
+        tag: 21.0.3-IF002
+    front:
+      image:
+        repository: cp.icr.io/cp/cp4a/ads/ads-front
+        tag: 21.0.3-IF002
+    decision_runtime_service:
+      image:
+        repository: cp.icr.io/cp/cp4a/ads/ads-runtime
+        tag: 21.0.3-IF002
+    decision_designer:
+      enabled: true
+    embedded_build_service:
+      image:
+        repository: cp.icr.io/cp/cp4a/ads/ads-build
+        tag: 21.0.3-IF002
+    rest_api:
+      image:
+        repository: cp.icr.io/cp/cp4a/ads/ads-restapi
+        tag: 21.0.3-IF002
+    credentials_service:
+      image:
+        repository: cp.icr.io/cp/cp4a/ads/ads-credentials
+        tag: 21.0.3-IF002
+    rr_integration:
+      image:
+        repository: cp.icr.io/cp/cp4a/ads/ads-rrintegration
+        tag: 21.0.3-IF002
+    decision_runtime:
+      enabled: true
+    download_service:
+      image:
+        repository: cp.icr.io/cp/cp4a/ads/ads-download
+        tag: 21.0.3-IF002
+  bastudio_configuration:
+    images:
+      bastudio:
+        repository: cp.icr.io/cp/cp4a/bas/bastudio
+        tag: 21.0.3-IF002
+    jms_server:
+      image:
+        repository: cp.icr.io/cp/cp4a/bas/jms
+        tag: 21.0.3-IF002
+    playback_server:
+      images:
+        db_job:
+          repository: cp.icr.io/cp/cp4a/bas/solution-server-helmjob-db
+          tag: 21.0.3-IF002
+        solution_server:
+          repository: cp.icr.io/cp/cp4a/bas/solution-server
+          tag: 21.0.3-IF002
+  ier_configuration:
+    image:
+      repository: cp.icr.io/cp/cp4a/ier/ier
+      tag: ga-5217-ier-if001
+  workflow_authoring_configuration:
+    bas_auto_import_job:
+      repository: cp.icr.io/cp/cp4a/baw/toolkit-installer
+      tag: 21.0.3-IF002
+    case:
+      init_job_image:
+        repository: cp.icr.io/cp/cp4a/baw/workflow-server-case-initialization
+        tag: 21.0.3-IF002
+    content_integration:
+      init_job_image:
+        repository: cp.icr.io/cp/cp4a/baw/iaws-ps-content-integration
+        tag: 21.0.3-IF002
+    ibm_workplace_job:
+      repository: cp.icr.io/cp/cp4a/baw/iaws-ibm-workplace
+      tag: 21.0.3-IF002
+    image:
+      repository: cp.icr.io/cp/cp4a/bas/workflow-authoring
+      tag: 21.0.3-IF002
+    jms:
+      image:
+        repository: cp.icr.io/cp/cp4a/baw/jms
+        tag: 21.0.3-IF002
+    pfs_bpd_database_init_job:
+      repository: cp.icr.io/cp/cp4a/baw/pfs-bpd-database-init-prod
+      tag: 21.0.3-IF002
+    upgrade_job:
+      repository: cp.icr.io/cp/cp4a/baw/workflow-server-dbhandling
+      tag: 21.0.3-IF002
+  navigator_configuration:
+    image:
+      repository: cp.icr.io/cp/cp4a/ban/navigator
+      tag: ga-3011-icn-la001
+  odm_configuration:
+    decisionCenter:
+      enabled: true
+    decisionRunner:
+      enabled: true
+    decisionServerRuntime:
+      enabled: true
+    image:
+      pullSecrets: admin.registrykey
+      repository: cp.icr.io/cp/cp4a/odm
+  ca_configuration:
+    deeplearning:
+      gpu_enabled: false
+      nodelabel_key: null
+      nodelabel_value: null
+    global:
+      image:
+        repository: cp.icr.io/cp/cp4a/iadp
+        tag: 21.0.3-IF002
+  ibm_license: accept
+  appVersion: 21.0.3
+  shared_configuration:
+    sc_cpe_limited_storage: false
+    sc_deployment_type: Starter
+    sc_optional_components: >-
+      ads_designer,ads_runtime,bai,ban,baw_authoring,business_orchestration,case,cmis,content_integration,css,decisionCenter,decisionRunner,decisionServerRuntime,document_processing_designer,ier,tm,workstreams
+    image_pull_secrets:
+      - admin.registrykey
+    trusted_certificate_list: []
+    sc_deployment_patterns: >-
+      foundation,application,content,decisions,decisions_ads,document_processing,workflow-workstreams
+    sc_deployment_baw_license: non-production
+    storage_configuration:
+      sc_block_storage_classname: ibmc-block-gold
+      sc_dynamic_storage_classname: managed-nfs-storage
+      sc_fast_file_storage_classname: managed-nfs-storage
+      sc_medium_file_storage_classname: managed-nfs-storage
+      sc_slow_file_storage_classname: managed-nfs-storage
+    root_ca_secret: '{{ meta.name }}-root-ca'
+    sc_run_as_user: null
+    sc_content_initialization: true
+    sc_deployment_license: non-production
+    images:
+      busybox:
+        repository: cp.icr.io/cp/cp4a/demo/busybox
+        tag: 1.32
+      dbcompatibility_init_container:
+        repository: cp.icr.io/cp/cp4a/aae/dba-dbcompatibility-initcontainer
+        tag: 21.0.3-IF002
+      gitea:
+        repository: cp.icr.io/cp/cp4a/demo/gitea
+        tag: 1.15.8
+      keytool_init_container:
+        repository: cp.icr.io/cp/cp4a/ums/dba-keytool-initcontainer
+        tag: 21.0.3-IF002
+      keytool_job_container:
+        repository: cp.icr.io/cp/cp4a/ums/dba-keytool-jobcontainer
+        tag: 21.0.3-IF002
+      openldap:
+        repository: cp.icr.io/cp/cp4a/demo/openldap
+        tag: 1.5.0
+      phpldapadmin:
+        repository: cp.icr.io/cp/cp4a/demo/phpldapadmin
+        tag: 0.9.0.1
+      umsregistration_initjob:
+        repository: cp.icr.io/cp/cp4a/aae/dba-umsregistration-initjob
+        tag: 21.0.3-IF002
+    sc_ingress_enable: false
+    sc_image_repository: cp.icr.io
+    sc_deployment_platform: ROKS
+    sc_deployment_fncm_license: non-production
+status:
+  components:
+    ae-icp4adeploy-workspace-aae:
+      adminSecret: icp4adeploy-workspace-aae-admin-secret
+      reconcile: Finished
+      service: Ready
+    viewone:
+      basViewoneImportJob: NotInstalled
+      viewoneDeployment: Ready
+      viewoneRRIntegration: NotInstalled
+      viewoneRoute: Ready
+      viewoneService: Ready
+      viewoneStorage: Ready
+    gitgatewayService:
+      gitsvcDeployment: Ready
+      gitsvcPersistentVolume: Ready
+      gitsvcService: Ready
+    css:
+      cssDeployment: Ready
+      cssService: Ready
+      cssStorage: Ready
+    adsMongo:
+      adsMongoDeployment: Ready
+      adsMongoService: Ready
+      adsMongoStorage: Ready
+      conditions: []
+    contentDesignerRepoAPI:
+      cdraDeployment: NotInstalled
+      cdraPersistentVolume: NotInstalled
+      cdraService: NotInstalled
+      cdraZenInegration: Ready
+    adsLtpaCreation:
+      adsLtpaCreationJob: Ready
+      conditions: []
+    adsCredentialsService:
+      adsCredentialsServiceDeployment: Ready
+      adsCredentialsServiceService: Ready
+      conditions: []
+    graphql:
+      graphqlDeployment: Ready
+      graphqlRoute: Ready
+      graphqlService: Ready
+      graphqlStorage: Ready
+    adsRrRegistration:
+      adsRrRegistrationJob: Ready
+      conditions: []
+    bai:
+      bai_deploy_status: Ready
+      insightsEngine: Ready
+    adsRuntimeService:
+      adsRuntimeServiceDeployment: Ready
+      adsRuntimeServiceService: Ready
+      adsRuntimeServiceZenIntegration: Ready
+      conditions: []
+    ae-icp4adeploy-pbk:
+      adminSecret: icp4adeploy-pbk-aae-admin-secret
+      reconcile: Finished
+      service: Ready
+    app-engine:
+      instance_count: '1'
+    contentProjectDeploymentService:
+      cpdsDeployment: NotReady
+      cpdsPersistentVolume: NotReady
+      cpdsService: NotReady
+      cpdsZenInegration: Ready
+    contentDesignerService:
+      cdsDeployment: NotInstalled
+      cdsPersistentVolume: NotInstalled
+      cdsService: NotInstalled
+      cdsZenInegration: Ready
+    adsGitService:
+      adsGitServiceDeployment: Ready
+      adsGitServiceService: Ready
+      conditions: []
+    cmis:
+      cmisDeployment: Ready
+      cmisRoute: Ready
+      cmisService: Ready
+      cmisStorage: Ready
+      cmisZenInegration: Ready
+    adsParsingService:
+      adsParsingServiceDeployment: Ready
+      adsParsingServiceService: Ready
+      conditions: []
+    bastudio:
+      adminSecret: icp4adeploy-bas-admin-secret
+      capabilities:
+        - app-designer
+        - business-orchestration
+        - workflow
+        - content-integration
+        - workstreams
+        - case
+        - bai
+      reconcile: Finished
+      service: Ready
+    ier:
+      conditions: []
+      ierDeployment: Ready
+      ierRoute: Ready
+      ierService: Ready
+      ierStorageCheck: Ready
+    adsRestApi:
+      adsRestApiDeployment: Ready
+      adsRestApiService: Ready
+      adsRestApiZenIntegration: Ready
+      conditions: []
+    adsBuildService:
+      adsBuildServiceDeployment: Ready
+      adsBuildServiceService: Ready
+      conditions: []
+    navigator:
+      navigatorDeployment: Ready
+      navigatorService: Ready
+      navigatorStorage: Ready
+      navigatorZenInegration: Ready
+    baw:
+      bawDeployment: NotInstalled
+      bawService: NotInstalled
+      bawZenIntegration: NotInstalled
+    odm:
+      odmDecisionServerConsoleDeployment: Ready
+      odmDecisionServerRuntimeDeployment: Ready
+      odmDecisionRunnerDeployment: Ready
+      odmDecisionCenterService: Ready
+      odmDecisionCenterDeployment: Ready
+      odmDecisionRunnerService: Ready
+      odmDecisionServerConsoleZenIntegration: Ready
+      odmDecisionServerRuntimeZenIntegration: Ready
+      odmOIDCRegistrationJob: Successful
+      odmDecisionServerRuntimeService: Ready
+      odmDecisionRunnerZenIntegration: Ready
+      odmDecisionServerConsoleService: Ready
+      odmDecisionCenterZenIntegration: Ready
+    cpe:
+      cpeDeployment: Ready
+      cpeJDBCDriver: Ready
+      cpeRoute: Ready
+      cpeService: Ready
+      cpeStorage: Ready
+      cpeZenInegration: Ready
+    iccsap:
+      iccsapDeployment: NotInstalled
+      iccsapRoute: NotInstalled
+      iccsapService: NotInstalled
+      iccsapStorageCheck: NotInstalled
+    tm:
+      tmDeployment: Ready
+      tmRoute: Ready
+      tmService: Ready
+      tmStorage: Ready
+    adsFront:
+      adsFrontDeployment: Ready
+      adsFrontService: Ready
+      adsFrontZenIntegration: Ready
+      conditions: []
+    adsRunService:
+      adsRunServiceDeployment: Ready
+      adsRunServiceService: Ready
+      conditions: []
+    prereq:
+      conditions: []
+      db2Status: Ready
+      gitTeaStatus: Ready
+      iafStatus: Ready
+      iamIntegrationStatus: Ready
+      ldapStatus: Ready
+      rootCASecretName: icp4adeploy-root-ca
+      rootCAStatus: Ready
+    adsRuntimeBaiRegistration:
+      adsRuntimeBaiRegistrationJob: Ready
+      conditions: []
+    resource-registry:
+      rrAdminSecret: icp4adeploy-rr-admin-secret
+      rrCluster: Ready
+      rrService: Ready
+    pfs:
+      pfsDeployment: NotInstalled
+      pfsService: NotInstalled
+      pfsZenIntegration: NotInstalled
+    adsDownloadService:
+      adsDownloadServiceDeployment: Ready
+      adsDownloadServiceService: Ready
+      adsDownloadServiceZenIntegration: Ready
+      conditions: []
+    ca:
+      caDatabaseVerification: Ready
+      caDeployment: Successful
+      caRRRegistration: Ready
+      caSecrets: Ready
+      caService: Ready
+      caStorageVerification: Ready
+      caZenRegistration: Ready
+      conditions:
+        lastTransitionTime: '2022-02-14T03:10:48Z'
+        message: Content Analyzer deploys successfully.
+        reason: caDeployment
+        status: 'True'
+        type: Successful
+    baml:
+      bamlDeployment: NotInstalled
+      bamlService: NotInstalled
+    extshare:
+      extshareDeployment: NotInstalled
+      extshareRoute: NotInstalled
+      extshareService: NotInstalled
+      extshareStorage: NotInstalled
+  conditions:
+    - message: ''
+      reason: Successful
+      status: 'True'
+      type: Ready
+    - message: Running reconciliation
+      reason: Running
+      status: 'True'
+      type: Running
+  endpoints:
+    - name: Ldap Web Console
+      scope: External
+      type: UI
+      uri: >-
+        https://ldapwebconsole-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud
+    - name: Resource Registry
+      scope: Internal
+      type: gRPC
+      uri: 'icp4adeploy-dba-rr-client:2379'
+    - name: CPE Login URL
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/cpe/acce/
+    - name: CPE Stateless Login URL
+      scope: External
+      type: UI
+      uri: >-
+        https://cpe-stless-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/acce
+    - name: CSS Health Check URL
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/cpe/P8CE/Health/CBRDashboard
+    - name: CMIS Login URL for CP4BA
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/openfncmis_wlp
+    - name: CMIS Login URL for FNCM
+      scope: External
+      type: UI
+      uri: >-
+        https://cmis-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/openfncmis_wlp
+    - name: GraphQL Login URL
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/content-services-graphql
+    - name: TM Login URL
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/tm/taskManagerWeb
+    - name: CDRA Login URL
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/adp/cdra/cdapi/
+    - name: CPDS Login URL
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/adp/cpds/ibm-dba-content-deployment/
+    - name: Navigator Login URL for CP4BA
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/icn/navigator/
+    - name: Navigator Login URL for FNCM
+      scope: External
+      type: UI
+      uri: >-
+        https://navigator-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/navigator/
+    - name: Application Engine - icp4adeploy-pbk
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/ae-pbk/
+    - name: BAStudio
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud
+    - name: Process portal
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/bas/ProcessPortal
+    - name: Business Automation Workflow External base URL
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/bas/
+    - name: Workplace
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/bas/Workplace
+    - name: Case client
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/icn/navigator/?desktop=baw
+    - name: IER Login URL
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/ier/EnterpriseRecordsPlugin/IERApplicationPlugin.jar
+    - name: Content Analyzer REST API URL
+      scope: External
+      type: API
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/adp/aca/v1/projects
+    - name: ODM Decision Center
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/odm/decisioncenter
+    - name: ODM Decision Center REST API
+      scope: External
+      type: API
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/odm/decisioncenter-api
+    - name: ODM Decision Runner
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/odm/DecisionRunner
+    - name: ODM Decision Server Console
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/odm/res
+    - name: ODM Decision Server Console REST API
+      scope: External
+      type: API
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/odm/res/apiauth/
+    - name: ODM Decision Server Runtime
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/odm/DecisionService
+    - name: ODM Decision Server Runtime REST API
+      scope: External
+      type: API
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/odm/DecisionService/rest/v1/<ruleset_path>
+    - name: Application Engine - icp4adeploy-workspace-aae
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/ae-workspace/
+    - name: adsRuntimeSwaggerUI
+      scope: External
+      type: UI
+      uri: >-
+        https://cpd-cp4ba.itzroks-270004hvf2-kzz03y-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/ads/runtime/api/swagger-ui
+  observedGeneration: '1'

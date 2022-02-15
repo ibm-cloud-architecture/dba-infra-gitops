@@ -1,0 +1,4 @@
+resources:
+- argocd-admin.yaml
+- service-account.yaml
+- dba-qa-environment.yaml

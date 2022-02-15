@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  annotations:
-    app.openshift.io/vcs-uri: https://github.com/ibm-cloud-architecture/dba-infra-gitops.git?ref=HEAD
-  creationTimestamp: null
-  name: dba-dev
-spec: {}
-status: {}

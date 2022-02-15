@@ -1,0 +1,97 @@
+﻿apiVersion: icp4a.ibm.com/v1
+kind: ICP4ACluster
+metadata:
+  labels:
+    app.kubernetes.io/instance: ibm-dba
+    app.kubernetes.io/managed-by: ibm-dba
+    app.kubernetes.io/name: ibm-dba
+    release: 21.0.3
+  name: icp4adeploy
+  namespace: dba-env
+spec:
+  bai_configuration:
+    business_performance_center:
+      all_users_access: true
+    image_credentials:
+      registry: cp.icr.io/cp/cp4a
+  resource_registry_configuration:
+    images:
+      resource_registry:
+        repository: cp.icr.io/cp/cp4a/aae/dba-etcd
+        tag: 21.0.3-IF002
+  navigator_configuration:
+    image:
+      repository: cp.icr.io/cp/cp4a/ban/navigator
+      tag: ga-3011-icn-la001
+  odm_configuration:
+    decisionCenter:
+      enabled: true
+    decisionRunner:
+      enabled: true
+    decisionServerRuntime:
+      enabled: true
+    image:
+      pullSecrets: admin.registrykey
+      repository: cp.icr.io/cp/cp4a/odm
+  ca_configuration:
+    deeplearning:
+      gpu_enabled: false
+      nodelabel_key: null
+      nodelabel_value: null
+    global:
+      image:
+        repository: cp.icr.io/cp/cp4a/iadp
+        tag: 21.0.3-IF002
+  ibm_license: accept
+  appVersion: 21.0.3
+  shared_configuration:
+    sc_cpe_limited_storage: false
+    sc_deployment_type: Starter
+    sc_optional_components: >-
+      ads_designer,ads_runtime,bai,ban,baw_authoring,business_orchestration,case,cmis,content_integration,css,decisionCenter,decisionRunner,decisionServerRuntime,document_processing_designer,ier,tm,workstreams
+    image_pull_secrets:
+      - admin.registrykey
+    trusted_certificate_list: []
+    sc_deployment_patterns: >-
+      foundation,application,content,decisions,decisions_ads,document_processing,workflow-workstreams
+    sc_deployment_baw_license: non-production
+    storage_configuration:
+      sc_block_storage_classname: ibmc-block-gold
+      sc_dynamic_storage_classname: managed-nfs-storage
+      sc_fast_file_storage_classname: managed-nfs-storage
+      sc_medium_file_storage_classname: managed-nfs-storage
+      sc_slow_file_storage_classname: managed-nfs-storage
+    root_ca_secret: '{{ meta.name }}-root-ca'
+    sc_run_as_user: null
+    sc_content_initialization: true
+    sc_deployment_license: non-production
+    images:
+      busybox:
+        repository: cp.icr.io/cp/cp4a/demo/busybox
+        tag: 1.32
+      dbcompatibility_init_container:
+        repository: cp.icr.io/cp/cp4a/aae/dba-dbcompatibility-initcontainer
+        tag: 21.0.3-IF002
+      gitea:
+        repository: cp.icr.io/cp/cp4a/demo/gitea
+        tag: 1.15.8
+      keytool_init_container:
+        repository: cp.icr.io/cp/cp4a/ums/dba-keytool-initcontainer
+        tag: 21.0.3-IF002
+      keytool_job_container:
+        repository: cp.icr.io/cp/cp4a/ums/dba-keytool-jobcontainer
+        tag: 21.0.3-IF002
+      openldap:
+        repository: cp.icr.io/cp/cp4a/demo/openldap
+        tag: 1.5.0
+      phpldapadmin:
+        repository: cp.icr.io/cp/cp4a/demo/phpldapadmin
+        tag: 0.9.0.1
+      umsregistration_initjob:
+        repository: cp.icr.io/cp/cp4a/aae/dba-umsregistration-initjob
+        tag: 21.0.3-IF002
+    sc_ingress_enable: false
+    sc_image_repository: cp.icr.io
+    sc_deployment_platform: ROKS
+    sc_deployment_fncm_license: non-production
+    
