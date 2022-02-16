@@ -1,8 +1,8 @@
 # Digital Business Automation Infrastructure GitOps
 
-This repository is defining different operands for Business Automation product. The operators are defined
-in the catalog repository and the instances here are for deployment of components that will be used
-to develop different automation solution.
+This repository is defining different operands for Cloud Pak for Business Automation products. The operators are defined
+in the [catalog repository](https://github.com/ibm-cloud-architecture/dba-gitops-catalog) and the instances, here, are for deployment of components that will be used
+to develop different automation solutions.
 As some of those solutions are using artifacts that are managed in the context of a product, then the 
 governance of such artifacts stays within the product, and it is not recommended to adopt a gitops
 approach for them. 
@@ -46,17 +46,22 @@ some visibility into what is deployed on a target cluster
 
 ## Scenarios
 
-### Deploy BAW in a multitenant namespace 
+### Deploy BAW ith BAI in a multitenant namespace 
 
-The goal is to deploy the operators and operands for the dev, staging and production environments 
+The goal is to deploy the operators and operands for the dev, qa,, staging and production environments 
 from the same central GitOps repository. The target deployment looks like in the following diagram:
 
 ![](./docs/images/BAW_BAI.png)
 (src for this diagram: [docs/diagrams/Business_Automation_WorkflowOCP.drawio](https://github.com/ibm-cloud-architecture/dba-gitops-catalog/tree/main/docs/diagrams/BAW_BAI.drawio))
 
+The custom resource is in []()
+
 As an example, for the non-production OpenShift cluster, the `cp4a` namespace, to deploy Business Automation Studio, the ArgoCD applications are:
 
 ![]()
+
+
+### Deploy ADS
 
 
 ## GitOps Bootstrap
@@ -89,12 +94,23 @@ a list of pods like:
 
   ```sh
     NAME                                                          READY   STATUS    RESTARTS   AGE
+    
     openshift-gitops-application-controller-0                     1/1     Running   0          4h5m
     openshift-gitops-applicationset-controller-6948bcf87c-jdv2x   1/1     Running   0          4h5m
     openshift-gitops-dex-server-64cbd8d7bd-76czz                  1/1     Running   0          4h5m
     openshift-gitops-redis-7867d74fb4-dssr2                       1/1     Running   0          4h5m
     openshift-gitops-repo-server-6dc777c845-gdjhr                 1/1     Running   0          4h5m
     openshift-gitops-server-7957cc47d9-cmxvw                      1/1     Running   0          4h5m
+    iaf-core-operator-controller-manager-6bdfc6c9bd-sl8tb             1/1     Running   0          4d19h
+    iaf-eventprocessing-operator-controller-manager-76cd4f8755dcnq5   1/1     Running   0          5d
+    iaf-flink-operator-controller-manager-6c4cc585d9-zdkfn            1/1     Running   0          5d
+    iaf-insights-engine-operator-controller-manager-cff8d4d5f-62qqz   1/1     Running   0          4d19h
+    iaf-operator-controller-manager-59c7b8f698-rk2f5                  1/1     Running   0          4d19h
+    ibm-common-service-operator-5c59699b56-89rg6                      1/1     Running   0          4d19h
+    ibm-cp4a-operator-77d9c86fc-6jqxs                                 1/1     Running   0          4d19h
+    ibm-cp4a-wfps-operator-controller-manager-d55d65c8d-4cgxg         1/1     Running   0          4d19h
+    ibm-elastic-operator-controller-manager-55fd78995c-9xxnt          1/1     Running   1          6d17h
+    openshift-pipelines-operator-75587c76cf-qsrkp                     1/1     Running   0          6d20h
   ```
 
 
