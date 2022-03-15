@@ -8,7 +8,7 @@ spec:
   destination:
     namespace: dba-qa
     server: https://kubernetes.default.svc
-  project: dba-infra
+  project: cp4a-infra
   source:
     path: environments/dba-qa
     repoURL: https://github.com/ibm-cloud-architecture/dba-infra-gitops.git

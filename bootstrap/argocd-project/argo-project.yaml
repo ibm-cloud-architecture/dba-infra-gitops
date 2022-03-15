@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: dba-infra
+  name: cp4a-infra
   namespace: openshift-gitops
   labels:
     gitops.tier.layer: infra
@@ -11,7 +11,7 @@ spec:
   - https://github.com/ibm-cloud-architecture/dba-infra-gitops.git
   # Only permit applications to deploy to the following namespace in the same cluster
   destinations:
-  - namespace: dba-dev
+  - namespace: cp4a-infra
     server: https://kubernetes.default.svc
   - namespace: openshift-gitops
     server: https://kubernetes.default.svc
@@ -25,6 +25,6 @@ spec:
   - name: read-only
     description: Read-only privileges to this project
     policies:
-    - p, proj:dba-dev:read-only, applications, get, dba-dev/*, allow
+    - p, proj:cp4a-infra:read-only, applications, get, cp4a/*, allow
     groups:
     - argocd-admins

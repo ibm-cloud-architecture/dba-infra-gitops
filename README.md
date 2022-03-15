@@ -136,11 +136,13 @@ The [dba-gitops-catalog repo](https://github.com/ibm-cloud-architecture/dba-gito
   ```
 
 
-* Create an ArgoCD project (named dba-infra) to better isolate the ArgoCD apps management inside Openshift Gitops for this deployment
+* Create an ArgoCD project (named cp4a-infra) to better isolate the ArgoCD apps management inside Openshift Gitops for this deployment.
 
     ```sh
     oc apply -k bootstrap/argocd-project 
     ```
+
+  ![](./docs/images/argo-projects.png)
 
 * Get the ArgoCD `admin` user's password with the command
 

@@ -66,7 +66,7 @@ spec:
     ## be defaulted to production.  This value could be different from the other licenses in the CR.
     sc_deployment_license: non-production
     ## CP4A patterns or capabilities to be deployed.  The base pattern is "foundation pattern", which includes BAN (Navigator) and RR.
-    sc_deployment_patterns: "application,workflow-workstreams"
+    sc_deployment_patterns: "workflow-workstreams"
     ## The optional components for the "foundation pattern" are ums, bas and bai.  If the user selects any of those optional components,
     ## it will be set here. Available option:
     sc_optional_components: "baw_authoring,business_orchestration,workstreams,bai"
