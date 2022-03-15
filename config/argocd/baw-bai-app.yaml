@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: cp4a-infra
   source:
-    path: environments/cp4a/services/overlays
+    path: environments/cp4a/services/baw-bai/overlays
     repoURL: https://github.com/ibm-cloud-architecture/dba-infra-gitops.git
   syncPolicy:
     automated:
