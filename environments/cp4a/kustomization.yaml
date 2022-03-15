@@ -1,3 +1,2 @@
 bases:
 - ./env/overlays
-- ./services/baw-bai/overlays

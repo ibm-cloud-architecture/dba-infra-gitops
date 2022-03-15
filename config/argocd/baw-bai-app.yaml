@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: null
+  name: baw-bai-cp4a
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: cp4a
+    server: https://kubernetes.default.svc
+  project: cp4a-infra
+  source:
+    path: environments/cp4a/services/overlays
+    repoURL: https://github.com/ibm-cloud-architecture/dba-infra-gitops.git
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+status:
+  health: {}
+  summary: {}
+  sync:
+    comparedTo:
+      destination: {}
+      source:
+        repoURL: ""
+    status: ""
