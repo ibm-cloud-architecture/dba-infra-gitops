@@ -11,7 +11,7 @@ spec:
   - https://github.com/ibm-cloud-architecture/dba-infra-gitops.git
   # Only permit applications to deploy to the following namespace in the same cluster
   destinations:
-  - namespace: cp4a-infra
+  - namespace: cp4a
     server: https://kubernetes.default.svc
   - namespace: openshift-gitops
     server: https://kubernetes.default.svc
@@ -25,6 +25,6 @@ spec:
   - name: read-only
     description: Read-only privileges to this project
     policies:
-    - p, proj:cp4a-infra:read-only, applications, get, cp4a/*, allow
+    - p, proj:cp4a-infra:read-only, applications, get, cp4a-infra/*, allow
     groups:
     - argocd-admins
