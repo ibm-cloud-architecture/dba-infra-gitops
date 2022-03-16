@@ -156,12 +156,6 @@ The [dba-gitops-catalog repo](https://github.com/ibm-cloud-architecture/dba-gito
    chrome https://$(oc get route openshift-gitops-server -o jsonpath='{.status.ingress[].host}'  -n openshift-gitops)
    ```
 
-* Deploy postgresql operator
-
-   ```sh
-    oc apply -k ./bootstrap/postgresql 
-   ```
-
 * Update the [OCP global pull secret of the `openshift-operators` project](https://github.com/IBM/cloudpak-gitops/blob/main/docs/install.md#update-the-ocp-global-pull-secret)
 with the entitlement key, then create `ibm-entitlement-key` and `admin.registrykey`
 
@@ -184,7 +178,7 @@ with the entitlement key, then create `ibm-entitlement-key` and `admin.registryk
 
  ![](./docs/images/argocd-apps.png)
 
-  and in the details for the 
+  and in the details for the BAW / CP for Automation deployment
 
  ![](./docs/images/argocd-baw-svc.png)
 
@@ -257,8 +251,12 @@ Two clusters are represented, the red one is the production cluster, as most lik
 
 One example of custom resource to support a dev deployment is in [the environments/dba-qa/services/baw-bai/base folder](https://github.com/ibm-cloud-architecture/dba-infra-gitops/tree/main/environments/dba-qa/services/baw-bai/base)
 
-The CR is 
+The CR is using the following major settings, to deploy BAW and BAI
 
+```yaml
+  sc_deployment_patterns: "workflow-workstreams"
+  sc_optional_components: "baw_authoring,business_orchestration,workstreams,bai"
+```
 
 
 ## Upgrade operator
@@ -272,4 +270,6 @@ First start by upgrading IBM common services according to https://github.ibm.com
 ## Add more service 
 
 
-## Contributions
+## Contributing
+
+Follow the process described [in this note](./docs/CONTRIBUTING.md) to help us improving this content.
