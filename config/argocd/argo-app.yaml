@@ -29,7 +29,7 @@ spec:
     jsonPointers:
     - /spec/host
     kind: Route
-  project: cp4a-infra
+  project: cp4ba
   source:
     path: config/argocd
     repoURL: https://github.com/ibm-cloud-architecture/dba-infra-gitops.git

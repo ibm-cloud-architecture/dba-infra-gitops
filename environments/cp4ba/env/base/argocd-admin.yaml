@@ -3,7 +3,7 @@ kind: RoleBinding
 metadata:
   creationTimestamp: null
   name: argocd-admin
-  namespace: cp4a
+  namespace: cp4ba
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

@@ -8,9 +8,9 @@ spec:
   destination:
     namespace: dba-qa
     server: https://kubernetes.default.svc
-  project: cp4a-infra
+  project: cp4ba
   source:
-    path: environments/dba-qa
+    path: environments/dba-qa/env/overlays
     repoURL: https://github.com/ibm-cloud-architecture/dba-infra-gitops.git
   syncPolicy:
     automated:

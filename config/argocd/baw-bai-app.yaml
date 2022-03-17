@@ -6,11 +6,11 @@ metadata:
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: cp4a
+    namespace: cp4ba
     server: https://kubernetes.default.svc
-  project: cp4a-infra
+  project: cp4ba
   source:
-    path: environments/cp4a/services/baw-bai/overlays
+    path: environments/cp4ba/services/baw-bai/overlays
     repoURL: https://github.com/ibm-cloud-architecture/dba-infra-gitops.git
   syncPolicy:
     automated:

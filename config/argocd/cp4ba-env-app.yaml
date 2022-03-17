@@ -2,15 +2,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   creationTimestamp: null
-  name: cp4a-env
+  name: cp4ba-env
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: cp4a
+    namespace: cp4ba
     server: https://kubernetes.default.svc
-  project: cp4a-infra
+  project: cp4ba
   source:
-    path: environments/cp4a/
+    path: environments/cp4ba/env/overlays
     repoURL: https://github.com/ibm-cloud-architecture/dba-infra-gitops.git
   syncPolicy:
     automated:

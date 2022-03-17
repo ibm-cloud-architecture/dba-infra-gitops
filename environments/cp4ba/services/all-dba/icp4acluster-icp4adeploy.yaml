@@ -1,13 +1,14 @@
 ﻿apiVersion: icp4a.ibm.com/v1
 kind: ICP4ACluster
 metadata:
+  creationTimestamp: ''
   labels:
     app.kubernetes.io/instance: ibm-dba
     app.kubernetes.io/managed-by: ibm-dba
     app.kubernetes.io/name: ibm-dba
     release: 21.0.3
   name: icp4adeploy
-  namespace: dba-qa
+  namespace: cp4ba
 spec:
   bai_configuration:
     business_performance_center:
@@ -18,147 +19,153 @@ spec:
     images:
       resource_registry:
         repository: cp.icr.io/cp/cp4a/aae/dba-etcd
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
   ecm_configuration:
     cmis:
       image:
         repository: cp.icr.io/cp/cp4a/fncm/cmis
-        tag: ga-306-cmis-la102
+        tag: ga-306-cmis-la104
     cpe:
       image:
         repository: cp.icr.io/cp/cp4a/fncm/cpe
-        tag: ga-558-p8cpe-la003
+        tag: ga-558-p8cpe-la005
     css:
       image:
         repository: cp.icr.io/cp/cp4a/fncm/css
-        tag: ga-558-p8css-la003
+        tag: ga-558-p8css-la005
     document_processing:
       cdra:
         image:
           repository: cp.icr.io/cp/cp4a/iadp/cdra
-          tag: 21.0.3-IF002
+          tag: 21.0.3-IF005
       cds:
         image:
           repository: cp.icr.io/cp/cp4a/iadp/cds
-          tag: 21.0.3-IF002
+          tag: 21.0.3-IF005
       cpds:
         image:
           repository: cp.icr.io/cp/cp4a/iadp/cpds
-          tag: 21.0.3-IF002
+          tag: 21.0.3-IF005
       gitgateway:
         image:
           repository: cp.icr.io/cp/cp4a/iadp/gitgateway
-          tag: 21.0.3-IF002
+          tag: 21.0.3-IF005
       mongo:
         image:
           repository: cp.icr.io/cp/cp4a/iadp/mongo
-          tag: 4.2.14
+          tag: 4.2.17
       viewone:
         image:
           repository: cp.icr.io/cp/cp4a/iadp/viewone
-          tag: 21.0.3-IF002
+          tag: 21.0.3-IF005
+    graphql:
+      graphql_production_setting:
+        enable_graph_iql: true
+      image:
+        repository: cp.icr.io/cp/cp4a/fncm/graphql
+        tag: ga-558-p8cgql-la005
     tm:
       image:
         repository: cp.icr.io/cp/cp4a/fncm/taskmgr
-        tag: ga-3011-tm-la001
+        tag: ga-3011-tm-if002
   ads_configuration:
     run_service:
       image:
         repository: cp.icr.io/cp/cp4a/ads/ads-run
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     parsing_service:
       image:
         repository: cp.icr.io/cp/cp4a/ads/ads-parsing
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     git_service:
       image:
         repository: cp.icr.io/cp/cp4a/ads/ads-gitservice
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     front:
       image:
         repository: cp.icr.io/cp/cp4a/ads/ads-front
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     decision_runtime_service:
       image:
         repository: cp.icr.io/cp/cp4a/ads/ads-runtime
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     decision_designer:
       enabled: true
     embedded_build_service:
       image:
         repository: cp.icr.io/cp/cp4a/ads/ads-build
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     rest_api:
       image:
         repository: cp.icr.io/cp/cp4a/ads/ads-restapi
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     credentials_service:
       image:
         repository: cp.icr.io/cp/cp4a/ads/ads-credentials
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     rr_integration:
       image:
         repository: cp.icr.io/cp/cp4a/ads/ads-rrintegration
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     decision_runtime:
       enabled: true
     download_service:
       image:
         repository: cp.icr.io/cp/cp4a/ads/ads-download
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
   bastudio_configuration:
     images:
       bastudio:
         repository: cp.icr.io/cp/cp4a/bas/bastudio
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     jms_server:
       image:
         repository: cp.icr.io/cp/cp4a/bas/jms
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     playback_server:
       images:
         db_job:
           repository: cp.icr.io/cp/cp4a/bas/solution-server-helmjob-db
-          tag: 21.0.3-IF002
+          tag: 21.0.3-IF005
         solution_server:
           repository: cp.icr.io/cp/cp4a/bas/solution-server
-          tag: 21.0.3-IF002
+          tag: 21.0.3-IF005
   ier_configuration:
     image:
       repository: cp.icr.io/cp/cp4a/ier/ier
-      tag: ga-5217-ier-if001
+      tag: ga-5217-ier-if003
   workflow_authoring_configuration:
     bas_auto_import_job:
       repository: cp.icr.io/cp/cp4a/baw/toolkit-installer
-      tag: 21.0.3-IF002
+      tag: 21.0.3-IF005
     case:
       init_job_image:
         repository: cp.icr.io/cp/cp4a/baw/workflow-server-case-initialization
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     content_integration:
       init_job_image:
         repository: cp.icr.io/cp/cp4a/baw/iaws-ps-content-integration
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     ibm_workplace_job:
       repository: cp.icr.io/cp/cp4a/baw/iaws-ibm-workplace
-      tag: 21.0.3-IF002
+      tag: 21.0.3-IF005
     image:
       repository: cp.icr.io/cp/cp4a/bas/workflow-authoring
-      tag: 21.0.3-IF002
+      tag: 21.0.3-IF005
     jms:
       image:
         repository: cp.icr.io/cp/cp4a/baw/jms
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     pfs_bpd_database_init_job:
       repository: cp.icr.io/cp/cp4a/baw/pfs-bpd-database-init-prod
-      tag: 21.0.3-IF002
+      tag: 21.0.3-IF005
     upgrade_job:
       repository: cp.icr.io/cp/cp4a/baw/workflow-server-dbhandling
-      tag: 21.0.3-IF002
+      tag: 21.0.3-IF005
   navigator_configuration:
     image:
       repository: cp.icr.io/cp/cp4a/ban/navigator
-      tag: ga-3011-icn-la001
+      tag: ga-3011-icn-if002
   odm_configuration:
     decisionCenter:
       enabled: true
@@ -177,7 +184,7 @@ spec:
     global:
       image:
         repository: cp.icr.io/cp/cp4a/iadp
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
   ibm_license: accept
   appVersion: 21.0.3
   shared_configuration:
@@ -202,30 +209,24 @@ spec:
     sc_content_initialization: true
     sc_deployment_license: non-production
     images:
-      busybox:
-        repository: cp.icr.io/cp/cp4a/demo/busybox
-        tag: 1.32
       dbcompatibility_init_container:
         repository: cp.icr.io/cp/cp4a/aae/dba-dbcompatibility-initcontainer
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
       gitea:
         repository: cp.icr.io/cp/cp4a/demo/gitea
         tag: 1.15.8
       keytool_init_container:
         repository: cp.icr.io/cp/cp4a/ums/dba-keytool-initcontainer
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
       keytool_job_container:
         repository: cp.icr.io/cp/cp4a/ums/dba-keytool-jobcontainer
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
       openldap:
         repository: cp.icr.io/cp/cp4a/demo/openldap
         tag: 1.5.0
-      phpldapadmin:
-        repository: cp.icr.io/cp/cp4a/demo/phpldapadmin
-        tag: 0.9.0.1
       umsregistration_initjob:
         repository: cp.icr.io/cp/cp4a/aae/dba-umsregistration-initjob
-        tag: 21.0.3-IF002
+        tag: 21.0.3-IF005
     sc_ingress_enable: false
     sc_image_repository: cp.icr.io
     sc_deployment_platform: ROKS
