@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: cp4a-operator-monitor
+  namespace: cp4ba
+spec:
+  endpoints:
+    - interval: 30s
+      port: http-metrics
+      scheme: http
+  selector:
+    matchLabels:
+      name: ibm-cp4a-operator

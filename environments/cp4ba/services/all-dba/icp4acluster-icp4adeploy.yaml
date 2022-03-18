@@ -1,7 +1,6 @@
 ﻿apiVersion: icp4a.ibm.com/v1
 kind: ICP4ACluster
 metadata:
-  creationTimestamp: ''
   labels:
     app.kubernetes.io/instance: ibm-dba
     app.kubernetes.io/managed-by: ibm-dba
