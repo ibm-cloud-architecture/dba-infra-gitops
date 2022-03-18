@@ -1,4 +1,4 @@
 resources:
-- argocd-admin.yaml
-- service-account.yaml
+#- argocd-admin.yaml
+#- service-account.yaml
 - cp4a-environment.yaml

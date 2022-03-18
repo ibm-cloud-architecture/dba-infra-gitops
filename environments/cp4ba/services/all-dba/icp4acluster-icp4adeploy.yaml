@@ -10,6 +10,13 @@ metadata:
   name: icp4adeploy
   namespace: cp4ba
 spec:
+  monitoring_configuration:
+    collectd_disable_host_monitoring: false
+    collectd_interval: 10
+    collectd_plugin_write_prometheus_port: 9103
+    mon_enable_plugin_mbean: true
+    mon_enable_plugin_pch: true
+    mon_metrics_writer_option: 4
   bai_configuration:
     business_performance_center:
       all_users_access: true
@@ -135,6 +142,7 @@ spec:
       repository: cp.icr.io/cp/cp4a/ier/ier
       tag: ga-5217-ier-if003
   workflow_authoring_configuration:
+    monitor_enabled: true
     bas_auto_import_job:
       repository: cp.icr.io/cp/cp4a/baw/toolkit-installer
       tag: 21.0.3-IF005
